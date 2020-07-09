@@ -11,5 +11,7 @@ public class Introductions {
         }
 
         System.out.println("fix commit");
+
+        System.out.println("Changes on the new branch");
     }
 }
