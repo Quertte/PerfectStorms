@@ -13,5 +13,7 @@ public class Introductions {
         System.out.println("fix commit");
 
         System.out.println("first commit on new branch(fix)");
+
+        System.out.println("second commit on new branch(fix)");
     }
 }
