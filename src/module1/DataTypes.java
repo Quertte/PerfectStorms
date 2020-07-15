@@ -1,6 +1,7 @@
 package module1;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class DataTypes {
@@ -75,8 +76,8 @@ public class DataTypes {
         int x2 = 10; // Примитивный тип - коробка со значением
 
         String s = "Hi"; // Ссылочный тип , с большой буквы - это класс. s - ссылка на объект в памяти
-                        // Тут можно вызвать методы
-                        //Обертки в отличии от примитивов можно хранить в коллекциях
+        s.equals("Hi");                              // Тут можно вызвать методы
+        List<Integer> list = Arrays.asList(1,2,3,5); //Обертки в отличии от примитивов можно хранить в коллекциях
 
         //2)
         // В стеке хрянятся ссылки на объекты и примитивные типы
