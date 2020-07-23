@@ -1,4 +1,4 @@
-package module1;
+package module;
 
 import java.util.Scanner;
 
@@ -10,7 +10,6 @@ public class Conditions {
         if (b == 7) {
             System.out.println("b = 7");
         }
-
         //2 задание : В консоль ничег оне будет выведено(будет ошибка компиляции : в if должно быть выражение boolean)
         //Если же в задании опечатка и в if на самом деле с == d++ то отработает блок else, т.к.
         // только при след. обращении к переменной d она станет равна 3
@@ -109,7 +108,7 @@ public class Conditions {
         Scanner scanner1 = new Scanner(System.in);
         String day = scanner1.next().toLowerCase(); // it can be any day
 
-        switch(day) {
+        switch (day) {
             case "monday":
                 System.out.println("This is the first day of the week");
                 break;

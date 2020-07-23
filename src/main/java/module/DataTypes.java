@@ -1,8 +1,7 @@
-package module1;
+package module;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class DataTypes {
     public static void main(String[] args) {
@@ -77,7 +76,7 @@ public class DataTypes {
 
         String s = "Hi"; // Ссылочный тип , с большой буквы - это класс. s - ссылка на объект в памяти
         s.equals("Hi");                              // Тут можно вызвать методы
-        List<Integer> list = Arrays.asList(1,2,3,5); //Обертки в отличии от примитивов можно хранить в коллекциях
+        List<Integer> list = Arrays.asList(1, 2, 3, 5); //Обертки в отличии от примитивов можно хранить в коллекциях
 
         //2)
         // В стеке хрянятся ссылки на объекты и примитивные типы

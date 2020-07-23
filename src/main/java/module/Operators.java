@@ -1,4 +1,4 @@
-package module1;
+package module;
 
 public class Operators {
     public static void main(String[] args) {
