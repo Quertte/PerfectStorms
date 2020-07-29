@@ -1,10 +1,11 @@
 package module;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Loop {
     public static void main(String[] args) {
-        //1 задание
+/*        //1 задание
         for (int i = 10; i <= 20; i++) {
             System.out.println("Квадрат числа " + i + " равен " + i * i);
         }
@@ -48,25 +49,38 @@ public class Loop {
             b = sc.nextInt();
             sum1 = sum1 + b;
         }while (b != 0);
-        System.out.println("Сумма всех введенных чисел равна: " + sum);
+        System.out.println("Сумма всех введенных чисел равна: " + sum1);*/
 
         //6 Задание
         Scanner scanner1 = new Scanner(System.in);
-        int t = -1;
+      //  int t = -1;
         System.out.print("Введите целое число: ");
         String c = scanner1.next();
-        int r = Integer.parseInt(c);
-        for (int i = 0; i <= c.length(); i++) {
-            int k = r % 10;
-            if (t == k){
-                System.out.println("ДА");
+        String[] array = c.split("");
+        Arrays.sort(array);
+        System.out.println(Arrays.toString(array));
+        for (int i = 0; i < array.length - 1; i++) {
+            if(array[i].equals(array[i + 1])){
+                System.out.println("Да");
                 break;
-            }else if(i == c.length()){
+            }else if(i == (array.length - 2)){
                 System.out.println("Нет");
             }
-            t = k;
-            r = r / 10;
+
+
         }
+        //   int r = Integer.parseInt(c);
+//        for (int i = 0; i <= c.length(); i++) {
+//            int k = r % 10;
+//            if (t == k){
+//                System.out.println("ДА");
+//                break;
+//            }else if(i == c.length()){
+//                System.out.println("Нет");
+//            }
+//            t = k;
+//            r = r / 10;
+//        }
         //7 задание
         int xyz = 10_000_000;
         double k1 = 0.014;
