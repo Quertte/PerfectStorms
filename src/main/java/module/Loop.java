@@ -53,17 +53,17 @@ public class Loop {
 
         //6 Задание
         Scanner scanner1 = new Scanner(System.in);
-      //  int t = -1;
+        //  int t = -1;
         System.out.print("Введите целое число: ");
         String c = scanner1.next();
         String[] array = c.split("");
         Arrays.sort(array);
         System.out.println(Arrays.toString(array));
         for (int i = 0; i < array.length - 1; i++) {
-            if(array[i].equals(array[i + 1])){
+            if (array[i].equals(array[i + 1])) {
                 System.out.println("Да");
                 break;
-            }else if(i == (array.length - 2)){
+            } else if (i == (array.length - 2)) {
                 System.out.println("Нет");
             }
 
@@ -88,8 +88,9 @@ public class Loop {
         double count = 0.0;
         for (int i = 0; i < 10; i++) {
             count += (xyz * k1) - (xyz * k2);
+            xyz += count;
         }
-        System.out.println("Население через 10 лет будет: " + (count + xyz));
+        System.out.println("Население через 10 лет будет: " + (xyz));
     }
 }
 
