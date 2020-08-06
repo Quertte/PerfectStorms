@@ -85,12 +85,13 @@ public class Loop {
         int xyz = 10_000_000;
         double k1 = 0.014;
         double k2 = 0.008;
-        double count = 0.0;
+        int count = 0;
         for (int i = 0; i < 10; i++) {
-            count += (xyz * k1) - (xyz * k2);
-            xyz += count;
+            count = (int)(xyz * k1) - (int)(xyz * k2);
+            xyz = xyz + (int)count;
         }
-        System.out.println("Население через 10 лет будет: " + (xyz));
+
+        System.out.println("Население через 10 лет будет: " +(xyz));
     }
 }
 
