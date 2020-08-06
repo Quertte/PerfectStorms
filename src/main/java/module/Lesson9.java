@@ -7,7 +7,7 @@ public class Lesson9 {
         //1 задание
         String st = "Java"; // В пуле
         String st2 = new String("Java"); // не в пуле
-        String st3 = st2.intern(); //В пуле
+        String st3 = st2.intern(); // не в пуле, ссылкается
         String st4 = "java"; //В пуле
         String st5 = null; // В задании опечатка - там просто st (была бы ошибка компиляции) // не в пуле
         String st6 = new String("JAVA"); //не в пуле
@@ -18,19 +18,22 @@ public class Lesson9 {
         System.out.println(string1);
 
         //3 задание
-        String x = "Andrew";
-        String y = "result";
-        String z = x.substring(0,3) + y.substring(3,y.length());
-        System.out.println(z);
+        Scanner scanner1 = new Scanner(System.in);
+        subStr("Andrew", "result");
 
         //Сканер для 4ого задания
         Scanner scanner = new Scanner(System.in);
         reverse(scanner.nextLine());
     }
 
+    //Метод для 3 задания
+    private static void subStr(String x, String y) {
+        System.out.println(x.substring(0, 3) + y.substring(3, y.length()));
+    }
+
     //4 Задание
-    private static void reverse(String x){
-       StringBuilder sb = new StringBuilder(x);
+    private static void reverse(String x) {
+        StringBuilder sb = new StringBuilder(x);
         System.out.println(sb.reverse().toString());
     }
 }
