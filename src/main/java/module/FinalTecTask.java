@@ -8,6 +8,13 @@ public class FinalTecTask {
     private static final String[] books = new String[100];
     private static int position;
 
+    static {
+        books[0] = "Clean Code";
+        books[1] = "Java Hortsman";
+        books[2] = "Java Shildt";
+        position = 3;
+    }
+
     public void add(String bookName) {
         if (position < books.length - 1) books[position++] = bookName;
         else System.out.println("The storage is full!");
@@ -17,17 +24,15 @@ public class FinalTecTask {
         return Arrays.copyOf(books, position);
     }
 
-    public String[] showByNameOrId(String bookName) {
-        String[] nameBook = new String[position];
-        int size = 0;
+    public String showByName(String bookName) {
+        String book = null;
         for (int i = 0; i < position; i++) {
-            String name = books[i];
-            if (name.equals(bookName)) {
-                nameBook[size++] = name;
+            String nameBook = books[i];
+            if (nameBook.equals(bookName)) {
+                book = nameBook;
             }
         }
-        nameBook = Arrays.copyOf(nameBook, size);
-        return nameBook;
+        return book;
     }
 
     private int indexOf(String name) {
@@ -66,7 +71,7 @@ public class FinalTecTask {
     }
 
     private void showMenu(String[] actions) {
-        System.out.println("Menu: ");
+        System.out.println("Menu:");
         for (int i = 0; i < actions.length; i++) {
             System.out.println((i + 1) + ". " + actions[i]);
         }
@@ -80,16 +85,22 @@ public class FinalTecTask {
             String select = scanner.nextLine();
             if (select.equals("1")) {
                 FinalTecTask.addBook(scanner, finalTecTask);
+                incorrect(scanner);
             } else if (select.equals("2")) {
                 FinalTecTask.showAllBooks(finalTecTask);
+                incorrect(scanner);
             } else if (select.equals("3")) {
-                FinalTecTask.editBooks(scanner, finalTecTask);
+                FinalTecTask.editBook(scanner, finalTecTask);
+                incorrect(scanner);
             } else if (select.equals("4")) {
                 FinalTecTask.deleteBook(scanner, finalTecTask);
+                incorrect(scanner);
             } else if (select.equals("5")) {
-                FinalTecTask.showAllByNameOrId(scanner, finalTecTask);
+                FinalTecTask.showByNameBook(scanner, finalTecTask);
+                incorrect(scanner);
             } else if (select.equals("6")) {
                 sortBooks();
+                incorrect(scanner);
             } else if (select.equals("7")) {
                 System.out.println("Bye");
                 run = false;
@@ -99,11 +110,28 @@ public class FinalTecTask {
         }
     }
 
+    public static void incorrect(Scanner scanner) {
+        System.out.println("Press Enter to return to the menu");
+        if (!scanner.nextLine().equals("")) {
+            System.out.println("You did not press Enter, please try again, if you want to exit press any other button");
+            if (!scanner.nextLine().equals("")) {
+                System.exit(0);
+            }
+        }
+    }
+
     public static void addBook(Scanner scanner, FinalTecTask finalTecTask) {
         System.out.println("Add new book: ");
         System.out.print("Enter the name of the book: ");
         String name = scanner.nextLine();
+        for (int i = 0; i < position; i++) {
+            if (name.equals(books[i])) {
+                System.out.println("Such a book already exists");
+                return;
+            }
+        }
         finalTecTask.add(name);
+        System.out.println("Book added");
     }
 
     public static void showAllBooks(FinalTecTask finalTecTask) {
@@ -118,7 +146,7 @@ public class FinalTecTask {
         }
     }
 
-    public static void editBooks(Scanner scanner, FinalTecTask finalTecTask) {
+    public static void editBook(Scanner scanner, FinalTecTask finalTecTask) {
         System.out.println("Edit the title of the book");
         System.out.print("Enter the name of the book you want to edit: ");
         String name = scanner.nextLine();
@@ -127,24 +155,32 @@ public class FinalTecTask {
     }
 
     public static void deleteBook(Scanner scanner, FinalTecTask finalTecTask) {
-        System.out.println("Delete book");
-        System.out.println("Enter the name of the book you want to delete: ");
-        String name = scanner.nextLine();
-        if (finalTecTask.deleteBook(name)) System.out.println("Book deleted successfully");
-        else System.out.println("There is no such book!");
+        if (position != 0) {
+            System.out.println("Delete book");
+            System.out.println("Enter the name of the book you want to delete: ");
+            String name = scanner.nextLine();
+            if (finalTecTask.deleteBook(name)) System.out.println("Book deleted successfully");
+            else System.out.println("There is no such book!");
+        }else {
+            System.out.println("There are no books in storage!");
+        }
     }
 
-    public static void showAllByNameOrId(Scanner scanner, FinalTecTask finalTecTask) {
+    public static void showByNameBook(Scanner scanner, FinalTecTask finalTecTask) {
         System.out.println("Find books by name");
-        System.out.print("Enter the name or ID of the book: ");
-        String name = scanner.nextLine();
-        String[] names = finalTecTask.showByNameOrId(name);
-        if (names.length != 0) {
-            for (String st : names) {
-                System.out.println(st);
+        if (position != 0) {
+            System.out.print("Enter the name of the book: ");
+            String name = scanner.nextLine();
+            String nameBook = finalTecTask.showByName(name);
+            if (nameBook != null) {
+                if (nameBook.equals(name)) {
+                    System.out.println("This book is already on the list");
+                }
+            } else {
+                System.out.println("There is no such book on the list");
             }
         } else {
-            System.out.println("There are no such books");
+            System.out.println("There are no books in storage");
         }
     }
 
@@ -166,8 +202,7 @@ public class FinalTecTask {
         Scanner scanner = new Scanner(System.in);
         FinalTecTask finalTecTask = new FinalTecTask();
         String[] action = {"Add new book", "Show all books", "Edit the title of the book", "Delete book",
-                "Find books by name or ID", "Sort all books", "Exit program"};
+                "Find books by name", "Sort all books", "Exit program"};
         new FinalTecTask().gui(scanner, finalTecTask, action);
-
     }
 }
