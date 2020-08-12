@@ -15,6 +15,11 @@ public class Methods {
         multiplication(5.0, 9.0);
         multiplication(1, 2, 3);
         System.out.println(recursion(-10));
+        fib(15);
+        for (int i = 0; i < 10; i++) {
+            System.out.print(fib1(i) + " ");
+        }
+
 
     }
 
@@ -122,6 +127,29 @@ public class Methods {
             return recursion(x + 1) + " " + x;
         }
         return recursion(x - 1) + " " + x;
+    }
+
+    //Фибоначи
+    public static void fib(int n) {
+        int n0 = 1;
+        int n1 = 1;
+        int n2;
+        System.out.print(n0 + " " + n1 + " ");
+        for (int i = 3; i <= n; i++) {
+            n2 = n0 + n1;
+            System.out.print(n2 + " ");
+            n0 = n1;
+            n1 = n2;
+        }
+        System.out.println();
+    }
+
+    public static int fib1(int n){
+        if(n <= 1){
+            return n;
+        }else {
+            return fib1(n - 1) + fib1(n - 2);
+        }
     }
 
 }
