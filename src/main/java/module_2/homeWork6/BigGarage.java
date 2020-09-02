@@ -15,7 +15,7 @@ public class BigGarage implements Garageable {
         if (count <= CAPACITY) {
             System.out.println("Машина припаркована, количество машин в гараже: " + count);
             result = true;
-        }else {
+        } else {
             System.out.println("Гараж переполнен");
         }
         return result;
@@ -23,8 +23,12 @@ public class BigGarage implements Garageable {
 
     @Override
     public boolean leave() {
-        count--;
-        System.out.println("Машина освободила гараж, количетсов машин в гараже: " + count);
+        if (count == 0) {
+            System.out.println("В гараже машин нет, вы можете припарковать машину!");
+        } else {
+            count--;
+            System.out.println("Машина освободила гараж, количетсов машин в гараже: " + count);
+        }
         return true;
     }
 }
