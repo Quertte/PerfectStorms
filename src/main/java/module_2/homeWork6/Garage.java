@@ -23,8 +23,12 @@ public class Garage implements Garageable{
 
     @Override
     public boolean leave() {
-        System.out.println("Машина освободила гараж");
-        count--;
+        if (count == 0) {
+            System.out.println("В гараже машин нет, вы можете припарковать машину!");
+        } else {
+            count--;
+            System.out.println("Машина освободила гараж, количетсов машин в гараже: " + count);
+        }
         return true;
     }
 }
