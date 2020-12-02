@@ -6,27 +6,27 @@ import java.util.Scanner;
 public class FinalTecTask {
 
     private static final String[] BOOKS = new String[100];
-    private static int position;
+    private static int size;
 
     static {
         BOOKS[0] = "Clean Code";
         BOOKS[1] = "Java Hortsman";
         BOOKS[2] = "Java Shildt";
-        position = 3;
+        size = 3;
     }
 
     public void add(String bookName) {
-        if (position < BOOKS.length - 1) BOOKS[position++] = bookName;
+        if (size < BOOKS.length - 1) BOOKS[size++] = bookName;
         else System.out.println("The storage is full!");
     }
 
     public String[] showAll() {
-        return Arrays.copyOf(BOOKS, position);
+        return Arrays.copyOf(BOOKS, size);
     }
 
     public String showByName(String bookName) {
         String book = null;
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < size; i++) {
             String nameBook = BOOKS[i];
             if (nameBook.equals(bookName)) {
                 book = nameBook;
@@ -37,7 +37,7 @@ public class FinalTecTask {
 
     private int indexOf(String name) {
         int rs1 = -1;
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < size; i++) {
             if (BOOKS[i].equals(name)) {
                 rs1 = i;
                 break;
@@ -62,10 +62,10 @@ public class FinalTecTask {
         boolean rs1 = index != -1;
         if (rs1) {
             int start = index + 1;
-            int length = position - index;
+            int length = size - index;
             System.arraycopy(BOOKS, start, BOOKS, index, length);
-            BOOKS[position - 1] = null;
-            position--;
+            BOOKS[size - 1] = null;
+            size--;
         }
         return rs1;
     }
@@ -124,7 +124,7 @@ public class FinalTecTask {
         System.out.println("Add new book: ");
         System.out.print("Enter the name of the book: ");
         String name = scanner.nextLine();
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < size; i++) {
             if (name.equals(BOOKS[i])) {
                 System.out.println("Such a book already exists");
                 return;
@@ -155,7 +155,7 @@ public class FinalTecTask {
     }
 
     public static void deleteBook(Scanner scanner, FinalTecTask finalTecTask) {
-        if (position != 0) {
+        if (size != 0) {
             System.out.println("Delete book");
             System.out.println("Enter the name of the book you want to delete: ");
             String name = scanner.nextLine();
@@ -168,7 +168,7 @@ public class FinalTecTask {
 
     public static void showByNameBook(Scanner scanner, FinalTecTask finalTecTask) {
         System.out.println("Find books by name");
-        if (position != 0) {
+        if (size != 0) {
             System.out.print("Enter the name of the book: ");
             String name = scanner.nextLine();
             String nameBook = finalTecTask.showByName(name);
@@ -185,14 +185,14 @@ public class FinalTecTask {
     }
 
     public static void sortBooks() {
-        String[] sortBooks = new String[position];
+        String[] sortBooks = new String[size];
         int size = 0;
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < FinalTecTask.size; i++) {
             sortBooks[size++] = BOOKS[i];
         }
         sortBooks = Arrays.copyOf(sortBooks, size);
         Arrays.sort(sortBooks);
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < FinalTecTask.size; i++) {
             BOOKS[i] = sortBooks[i];
             System.out.println(BOOKS[i]);
         }
