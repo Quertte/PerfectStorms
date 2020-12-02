@@ -5,29 +5,29 @@ import java.util.Scanner;
 
 public class FinalTecTask {
 
-    private static final String[] books = new String[100];
+    private static final String[] BOOKS = new String[100];
     private static int position;
 
     static {
-        books[0] = "Clean Code";
-        books[1] = "Java Hortsman";
-        books[2] = "Java Shildt";
+        BOOKS[0] = "Clean Code";
+        BOOKS[1] = "Java Hortsman";
+        BOOKS[2] = "Java Shildt";
         position = 3;
     }
 
     public void add(String bookName) {
-        if (position < books.length - 1) books[position++] = bookName;
+        if (position < BOOKS.length - 1) BOOKS[position++] = bookName;
         else System.out.println("The storage is full!");
     }
 
     public String[] showAll() {
-        return Arrays.copyOf(books, position);
+        return Arrays.copyOf(BOOKS, position);
     }
 
     public String showByName(String bookName) {
         String book = null;
         for (int i = 0; i < position; i++) {
-            String nameBook = books[i];
+            String nameBook = BOOKS[i];
             if (nameBook.equals(bookName)) {
                 book = nameBook;
             }
@@ -38,7 +38,7 @@ public class FinalTecTask {
     private int indexOf(String name) {
         int rs1 = -1;
         for (int i = 0; i < position; i++) {
-            if (books[i].equals(name)) {
+            if (BOOKS[i].equals(name)) {
                 rs1 = i;
                 break;
             }
@@ -52,7 +52,7 @@ public class FinalTecTask {
         if (rs1) {
             System.out.println("Enter a new name: ");
             String newName = scanner.nextLine();
-            books[index] = newName;
+            BOOKS[index] = newName;
         }
         return rs1;
     }
@@ -63,8 +63,8 @@ public class FinalTecTask {
         if (rs1) {
             int start = index + 1;
             int length = position - index;
-            System.arraycopy(books, start, books, index, length);
-            books[position - 1] = null;
+            System.arraycopy(BOOKS, start, BOOKS, index, length);
+            BOOKS[position - 1] = null;
             position--;
         }
         return rs1;
@@ -125,7 +125,7 @@ public class FinalTecTask {
         System.out.print("Enter the name of the book: ");
         String name = scanner.nextLine();
         for (int i = 0; i < position; i++) {
-            if (name.equals(books[i])) {
+            if (name.equals(BOOKS[i])) {
                 System.out.println("Such a book already exists");
                 return;
             }
@@ -188,13 +188,13 @@ public class FinalTecTask {
         String[] sortBooks = new String[position];
         int size = 0;
         for (int i = 0; i < position; i++) {
-            sortBooks[size++] = books[i];
+            sortBooks[size++] = BOOKS[i];
         }
         sortBooks = Arrays.copyOf(sortBooks, size);
         Arrays.sort(sortBooks);
         for (int i = 0; i < position; i++) {
-            books[i] = sortBooks[i];
-            System.out.println(books[i]);
+            BOOKS[i] = sortBooks[i];
+            System.out.println(BOOKS[i]);
         }
     }
 
